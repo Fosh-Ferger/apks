@@ -1,3 +1,8 @@
+/*
+* Read the description)
+* All another is simple
+*/
+
 #include <windows.h>
 #include <iostream>
 #include <vector>
@@ -46,7 +51,7 @@ bool GetFWTime(WCHAR *path, FILETIME *ret)
 	hFile = CreateFile(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
 	if (hFile == INVALID_HANDLE_VALUE || !GetFileTime(hFile, &ftCreate, &ftAccess, ret))
 	{
-		std::cout << "Îøèáêà! Íåò äîñòóïà ê ôàéëó!\n";
+		std::cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ ! ÃÃ¥Ã² Ã¤Ã®Ã±Ã²Ã³Ã¯Ã  Ãª Ã´Ã Ã©Ã«Ã³!\n";
 		return 0;
 	}
 	GetFileTime(hFile, &ftCreate, &ftAccess, ret);
@@ -77,7 +82,7 @@ BOOL CALLBACK speichereFenster(HWND hwnd, LPARAM lParam) {
 bool EnterNum(HWND *ret) {
 	std::vector<std::wstring> titles;
 	EnumWindows(speichereFenster, reinterpret_cast<LPARAM>(&titles));
-	std::cout << "Îòêðûòû îêíà: \n";
+	std::cout << "ÃŽÃ²ÃªÃ°Ã»Ã²Ã» Ã®ÃªÃ­Ã : \n";
 
 	unsigned short i = 0;
 	unsigned short lasti;
@@ -88,20 +93,20 @@ bool EnterNum(HWND *ret) {
 	}
 
 	lasti = --i;
-	std::cout << "Ââåäèòå íîìåð íóæíîãî îêíà\n";
+	std::cout << "Ã‚Ã¢Ã¥Ã¤Ã¨Ã²Ã¥ Ã­Ã®Ã¬Ã¥Ã° Ã­Ã³Ã¦Ã­Ã®Ã£Ã® Ã®ÃªÃ­Ã \n";
 	std::cin >> i;
 
 	if (i > lasti || i < 0) 
 	{
 		i = 0;
 	}
-	std::cout << "Èñïîëüçóåòñÿ íîìåð " << i << '\n';
+	std::cout << "ÃˆÃ±Ã¯Ã®Ã«Ã¼Ã§Ã³Ã¥Ã²Ã±Ã¿ Ã­Ã®Ã¬Ã¥Ã° " << i << '\n';
 	*ret = st[i];
 	return 1;
 }
 
 bool EnterPath(WCHAR *ret){
-		std::cout << "Âåäèòå àäðåñ ôàéëà\n";
+		std::cout << "Ã‚Ã¥Ã¤Ã¨Ã²Ã¥ Ã Ã¤Ã°Ã¥Ã± Ã´Ã Ã©Ã«Ã \n";
 		std::wstring cin;
 		std::wcin >> cin;
 
@@ -112,7 +117,7 @@ bool EnterPath(WCHAR *ret){
 			return 1;
 		}
 
-		std::cout << "Ââåä¸í íåïðàâèëüíûé ïóòü\n";
+		std::cout << "Ã‚Ã¢Ã¥Ã¤Â¸Ã­ Ã­Ã¥Ã¯Ã°Ã Ã¢Ã¨Ã«Ã¼Ã­Ã»Ã© Ã¯Ã³Ã²Ã¼\n";
 		return 0;
 
 }
@@ -133,7 +138,7 @@ int main()
 	}
 	while (!GetFWTime(path, &LastFT));
 	
-	std::cout << "\t Íà÷àëîñü îòñëåæèâàíèå èçìåíåíèé\n";
+	std::cout << "\t ÃÃ Ã·Ã Ã«Ã®Ã±Ã¼ Ã®Ã²Ã±Ã«Ã¥Ã¦Ã¨Ã¢Ã Ã­Ã¨Ã¥ Ã¨Ã§Ã¬Ã¥Ã­Ã¥Ã­Ã¨Ã©\n";
 
 		/*
 			SYSTEMTIME stUTC, stLocal;
@@ -146,7 +151,7 @@ int main()
 
 				FILETIME NewFT;
 				if (!GetFWTime(path, &NewFT)) 
-					std::cout << "Îøèáêà! Ïðîïàë äîñòóï ê ôàéëó!\n";
+					std::cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ ! ÃÃ°Ã®Ã¯Ã Ã« Ã¤Ã®Ã±Ã²Ã³Ã¯ Ãª Ã´Ã Ã©Ã«Ã³!\n";
 
 				if (NewFT.dwHighDateTime != LastFT.dwHighDateTime || NewFT.dwLowDateTime != LastFT.dwLowDateTime)
 				{
@@ -160,7 +165,7 @@ int main()
 					SendMessage(hCurrentWindow, WM_KEYUP, VK_CONTROL, 0x0167027F);
 
 					SetForegroundWindow(oldhwnd);
-					std::cout << "Çàìå÷åíî èçìåíåíèå ôàéëà.\n";
+					std::cout << "Ã‡Ã Ã¬Ã¥Ã·Ã¥Ã­Ã® Ã¨Ã§Ã¬Ã¥Ã­Ã¥Ã­Ã¨Ã¥ Ã´Ã Ã©Ã«Ã .\n";
 					LastFT = NewFT;
 				}
 				Sleep(350);
