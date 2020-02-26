@@ -1,14 +1,13 @@
 /*
 * Read the description)
 * All another is simple
+	by operok 022020
 */
 
 #include <windows.h>
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <tchar.h>
-#include <strsafe.h>
 
 class dShort
 {
